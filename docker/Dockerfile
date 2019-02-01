@@ -20,8 +20,8 @@ ENV EMAIL="ca@ca.com"
 
 WORKDIR /ca
 
-COPY ./sign-server.sh .
-COPY ./sign-client.sh .
+COPY ./sign-server.sh /usr/local/bin/sign-server
+COPY ./sign-client.sh /usr/local/bin/sign-client
 RUN openssl genrsa -out ca.key.pem 4096
 RUN openssl req -new -x509 -days 3650 -key "ca.key.pem" -sha256 -out "ca.pem" \
     -subj "/C=${COUNTRY}/ST=${STATE}/L=${CITY}/O=${ORGANIZATION}/OU=${ORGANIZATIONAL_UNIT}/CN=${COMMON_NAME}/emailAddress=${EMAIL}"

@@ -4,3 +4,5 @@ services:
   docker:
     image: openssl-ca:latest
     build: .
+    volumes: 
+      - "./ca:/ca"
