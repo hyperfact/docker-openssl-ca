@@ -12,7 +12,7 @@ echo subjectAltName = DNS:${HOST},IP:${IP} > server-extfile.cnf
 echo extendedKeyUsage = serverAuth >> server-extfile.cnf
 
 # sign
-openssl x509 -req -days 3650 -sha256 -in server.csr -CA ca.pem -CAkey ca.key.pem \
+openssl x509 -req -days 3650 -sha256 -in server.csr -CA /ca/ca.pem -CAkey /ca/ca.key.pem \
     -CAcreateserial -out server.cert.pem -extfile server-extfile.cnf
 
 # access
@@ -21,3 +21,5 @@ chmod -v 0444 server.cert.pem
 
 # clean
 rm -f server-extfile.cnf
+
+cp -f /ca/ca.pem ./

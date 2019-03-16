@@ -27,4 +27,9 @@ RUN openssl req -new -x509 -days 3650 -key "ca.key.pem" -sha256 -out "ca.pem" \
     -subj "/C=${COUNTRY}/ST=${STATE}/L=${CITY}/O=${ORGANIZATION}/OU=${ORGANIZATIONAL_UNIT}/CN=${COMMON_NAME}/emailAddress=${EMAIL}"
 RUN chmod -v 0400 ca.key.pem && chmod -v 0444 ca.pem
 
+VOLUME [ "/ca" ]
+
+WORKDIR /certs
+VOLUME [ "/certs" ]
+
 LABEL Name=openssl-ca Version=0.0.1
